@@ -14,7 +14,7 @@ export default function section1() {
 
 function Slide() {
   return (
-    <div className="grid md:grid-cols-2 gap-10">
+    <div className="grid md:grid-cols-2">
       <div className="image">
         <Link href={"/"}>
           <a>
