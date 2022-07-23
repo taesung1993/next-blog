@@ -1,13 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Header from '../components/header';
+import Format from '../layout/format';
 
 export default function Home() {
   return (
-    <div>
-      <Header/>
-    </div>
+    <Format>
+      <h1>Main Component</h1>
+    </Format>
   )
 }
 
