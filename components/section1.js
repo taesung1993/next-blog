@@ -21,10 +21,10 @@ export default function section1() {
         <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
           <Swiper
             slidesPerView={1}
-            loop={true}
-            autoplay={{
-              duration: 2000
-            }}
+            // loop={true}
+            // autoplay={{
+            //   duration: 2000
+            // }}
           >
             <SwiperSlide>
               {Slide()}
@@ -68,6 +68,7 @@ function Slide() {
             </a>
           </Link>
         </div>
+        
         <p className="text-gray-500 py-3">
           Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem lpsum decided to leave for the far World of Grammer.
         </p>
