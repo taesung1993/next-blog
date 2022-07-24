@@ -7,16 +7,10 @@ import 'swiper/css';
 
 
 export default function section1() {
-  const bg = {
-    background: "url('/images/bg_banner.png') no-repeat",
-    backgroundPosition: "right",
-    backgroundSize: "contain"
-  }
-
   SwiperCore.use([Autoplay]);
     
   return (
-    <section className="py-16" style={bg}>
+    <section className="py-16">
       <div className="container mx-auto md:px-20">
         <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
           <Swiper
