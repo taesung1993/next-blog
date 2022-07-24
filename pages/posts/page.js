@@ -1,6 +1,7 @@
 import Format from "../../layout/format";
 import Author from "../../components/_child/author";
 import Image from "next/image";
+import Related from "../../components/_child/related";
 
 export default function Page() {
   return (
@@ -60,6 +61,8 @@ export default function Page() {
             World of Grammer. Lorem ipsum dolor sit amet consectetur
           </p>
         </div>
+
+        <Related></Related>
       </section>
     </Format>
   );
