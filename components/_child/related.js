@@ -1,27 +1,44 @@
 import Link from "next/link";
 import Image from "next/image";
 import Author from "./author";
+import Spinner from "./spinner";
+import Error from "./error";
+import fetcher from "../../lib/fetcher";
 
 export default function related() {
+    const { data, isLoading, isError } = fetcher("/api/posts");
+
+    if (isLoading) {
+      return <Spinner></Spinner>;
+    }
+
+    if (isError) {
+      return <Error></Error>;
+    }
+
   return (
     <div className="pt-20">
       <h1 className="font-bold text-3xl py-12">Related</h1>
    
       <div className="flex flex-col gap-10">
-        {Post()}
+        {data.map((value, index) => (
+          <Post key={'related-'+index} data={value}></Post>
+        ))}
       </div>
    </div>
   );
 }
 
-function Post() {
+function Post({data}) {
+  const { id, title, description, category, img, published, author } = data;
+
   return (
     <div className="flex gap-5">
       <div className="image flex flex-col justify-start">
         <Link href={"/"}>
           <a>
             <Image
-              src={"/images/banner_img_01.jpg"}
+              src={img || "/"}
               className="rounded"
               width={300}
               height={200}
@@ -32,25 +49,27 @@ function Post() {
 
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={"/"}>
+          <Link href={`/posts/${id}`}>
             <a className="text-orange-600 hover:text-orange-800">
-              Business, Travel
+              {category || "Unknown"}
             </a>
           </Link>
-          <Link href={"/"}>
-            <a className="text-gray-600 hover:text-gray-800">- July, 2022</a>
+          <Link href={`/posts/${id}`}>
+            <a className="text-gray-600 hover:text-gray-800">
+              - {published || "Unknown"}
+            </a>
           </Link>
         </div>
 
         <div className="title">
-          <Link href={"/"}>
+          <Link href={`/posts/${id}`}>
             <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
-              Your most unhappy customers are your greatest source of learning
+              {title || "Unknown"}
             </a>
           </Link>
         </div>
 
-        <Author />
+        {author ? <Author {...author} /> : <></>}
       </div>
     </div>
   );

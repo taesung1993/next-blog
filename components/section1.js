@@ -28,10 +28,10 @@ export default function section1() {
         <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
           <Swiper
             slidesPerView={1}
-            // loop={true}
-            // autoplay={{
-            //   duration: 2000
-            // }}
+            loop={true}
+            autoplay={{
+              duration: 2000
+            }}
           >
             {
               data.map((value, index) => (
@@ -51,7 +51,7 @@ function Slide({data}) {
   return (
     <div className="grid md:grid-cols-2">
       <div className="image">
-        <Link href={"/"}>
+        <Link href={`/posts/${id}`}>
           <a>
             <Image src={img || "/"} width={600} height={600} />
           </a>
@@ -59,12 +59,12 @@ function Slide({data}) {
       </div>
       <div className="info flex flex-col justify-center">
         <div className="cat">
-          <Link href={"/"}>
+          <Link href={`/posts/${id}`}>
             <a className="text-orange-600 hover:text-orange-800">
               {category || "Unknown"}
             </a>
           </Link>
-          <Link href={"/"}>
+          <Link href={`/posts/${id}`}>
             <a className="text-gray-600 hover:text-gray-800">
               - {published || "Unknown"}
             </a>
@@ -72,17 +72,15 @@ function Slide({data}) {
         </div>
 
         <div className="title">
-          <Link href={"/"}>
+          <Link href={`/posts/${id}`}>
             <a className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">
               {title || "Unknown"}
             </a>
           </Link>
         </div>
 
-        <p className="text-gray-500 py-3">
-          {description || "description"}
-        </p>
-        {author ? <Author /> : <></>}
+        <p className="text-gray-500 py-3">{description || "description"}</p>
+        {author ? <Author {...author}/> : <></>}
       </div>
     </div>
   );
